@@ -1,6 +1,32 @@
-import { products } from "../data/storeData";
+import { useEffect, useState } from "react";
+import { useCart } from "../context/CartContext";
+import api from "../services/api";
 
 function Products() {
+  const { addToCart } = useCart();
+
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    const fetchProducts = async () => {
+      try {
+        const response = await api.get("/products");
+
+        setProducts(response.data.products);
+      } catch (error) {
+        console.error("Failed to fetch products:", error);
+
+        setError("Unable to load products.");
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchProducts();
+  }, []);
+
   return (
     <section className="products" id="products">
       <div className="heading">
@@ -15,53 +41,62 @@ function Products() {
         </a>
       </div>
 
-      <div className="products-container">
-        {products.map((product) => (
-          <div className="box" key={product.image}>
-            <img
-              src={`/img/${product.image}`}
-              alt={product.name}
-            />
+      {loading && (
+        <p>Loading products...</p>
+      )}
 
-            <span>{product.category}</span>
+      {error && (
+        <p>{error}</p>
+      )}
 
-            <h2>{product.name}</h2>
+      {!loading && !error && (
+        <div className="products-container">
+          {products.map((product) => (
+            <div className="box" key={product.image}>
+              <img
+                src={`/img/${product.image}`}
+                alt={product.name}
+              />
 
-            <h3 className="price">
-              {product.price} <span>/kg</span>
-            </h3>
+              <span>{product.category}</span>
 
-            <button
+              <h2>{product.name}</h2>
+
+              <h3 className="price">
+                {product.price} <span>/kg</span>
+              </h3>
+
+              <button
                 type="button"
                 className="product-cart-button"
                 aria-label={`Add ${product.name} to cart`}
-                >
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
+                onClick={() => addToCart(product)}
               >
-              <path
-                d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 7H6"
-              />
-              <circle cx="10" cy="20" r="1.5" />
-              <circle cx="18" cy="20" r="1.5" />
-              </svg>
-            </button>
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 7H6" />
+                  <circle cx="10" cy="20" r="1.5" />
+                  <circle cx="18" cy="20" r="1.5" />
+                </svg>
+              </button>
 
-            <button
-              type="button"
-              className="product-heart-button"
-              aria-label={`Add ${product.name} to wishlist`}
-            >
-              ♡
-            </button>
+              <button
+                type="button"
+                className="product-heart-button"
+                aria-label={`Add ${product.name} to wishlist`}
+              >
+                ♡
+              </button>
 
-            <span className="discount">
-              {product.discount}
-            </span>
-          </div>
-        ))}
-      </div>
+              <span className="discount">
+                {product.discount}
+              </span>
+            </div>
+          ))}
+        </div>
+      )}
     </section>
   );
 }

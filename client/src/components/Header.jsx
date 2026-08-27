@@ -1,7 +1,10 @@
 import { useState } from "react";
+import { useCart } from "../context/CartContext";
 
-function Header() {
+function Header({ onCartOpen }) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  const { cartCount } = useCart();
 
   const closeMenu = () => {
     setMenuOpen(false);
@@ -14,10 +17,9 @@ function Header() {
         Delicacy
       </a>
 
-      {/* Mobile hamburger */}
       <button
         type="button"
-        className={`mobile-menu-button ${menuOpen ? "active" : ""}`}
+        className="mobile-menu-button"
         onClick={() => setMenuOpen(!menuOpen)}
         aria-label={menuOpen ? "Close menu" : "Open menu"}
         aria-expanded={menuOpen}
@@ -29,31 +31,47 @@ function Header() {
 
       <ul className={`navbar ${menuOpen ? "active" : ""}`}>
         <li>
-          <a href="#home" className="home-active" onClick={closeMenu}>
+          <a
+            href="#home"
+            className="home-active"
+            onClick={closeMenu}
+          >
             Home
           </a>
         </li>
 
         <li>
-          <a href="#categories" onClick={closeMenu}>
+          <a
+            href="#categories"
+            onClick={closeMenu}
+          >
             Categories
           </a>
         </li>
 
         <li>
-          <a href="#products" onClick={closeMenu}>
+          <a
+            href="#products"
+            onClick={closeMenu}
+          >
             Products
           </a>
         </li>
 
         <li>
-          <a href="#about" onClick={closeMenu}>
+          <a
+            href="#about"
+            onClick={closeMenu}
+          >
             About
           </a>
         </li>
 
         <li>
-          <a href="#customers" onClick={closeMenu}>
+          <a
+            href="#customers"
+            onClick={closeMenu}
+          >
             Customers
           </a>
         </li>
@@ -64,13 +82,32 @@ function Header() {
           className="cart-button"
           type="button"
           aria-label="Shopping cart"
+          onClick={onCartOpen}
         >
-          <i className="bx bx-cart-alt"></i>
+          <svg
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 7H6" />
+            <circle cx="10" cy="20" r="1.5" />
+            <circle cx="18" cy="20" r="1.5" />
+          </svg>
+
+          {cartCount > 0 && (
+            <span className="cart-count">
+              {cartCount}
+            </span>
+          )}
         </button>
 
         <div className="profile">
-          <img src="/img/profile.jpg" alt="Abdus Rahman" />
+          <img
+            src="/img/profile.jpg"
+            alt="Abdus Rahman"
+          />
+
           <span>Abdus Rahman</span>
+
           <i className="bx bx-caret-down"></i>
         </div>
       </div>
