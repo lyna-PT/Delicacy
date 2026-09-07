@@ -1,5 +1,6 @@
 const express = require("express");
 const cors = require("cors");
+const categoryRoutes = require("./routes/categoryRoutes");
 require("dotenv").config();
 
 const connectDB = require("./config/db");
@@ -26,6 +27,7 @@ app.get("/api/health", (req, res) => {
 
 // Product routes
 app.use("/api/products", productRoutes);
+app.use("/api/categories", categoryRoutes);
 
 app.listen(PORT, () => {
   console.log(
