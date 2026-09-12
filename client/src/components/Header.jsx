@@ -12,11 +12,51 @@ function Header({ onCartOpen }) {
 
   return (
     <header>
+      {/* Logo */}
       <a href="#home" className="logo">
-        <i className="bx bxs-basket"></i>
+        <svg
+          className="logo-icon"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        >
+          <path
+            d="M4 8h16"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+
+          <path
+            d="M5 8l1.5 10h11L19 8"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+          />
+
+          <path
+            d="M8 8V6a4 4 0 0 1 8 0v2"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+            strokeLinecap="round"
+          />
+
+          <path
+            d="M9 12v3M12 12v3M15 12v3"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="1.5"
+            strokeLinecap="round"
+          />
+        </svg>
+
         Delicacy
       </a>
 
+      {/* Mobile Menu */}
       <button
         type="button"
         className="mobile-menu-button"
@@ -29,6 +69,7 @@ function Header({ onCartOpen }) {
         <span></span>
       </button>
 
+      {/* Navigation */}
       <ul className={`navbar ${menuOpen ? "active" : ""}`}>
         <li>
           <a
@@ -77,6 +118,7 @@ function Header({ onCartOpen }) {
         </li>
       </ul>
 
+      {/* Header Actions */}
       <div className="header-actions">
         <button
           className="cart-button"
@@ -88,9 +130,21 @@ function Header({ onCartOpen }) {
             viewBox="0 0 24 24"
             aria-hidden="true"
           >
-            <path d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 7H6" />
-            <circle cx="10" cy="20" r="1.5" />
-            <circle cx="18" cy="20" r="1.5" />
+            <path
+              d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 7H6"
+            />
+
+            <circle
+              cx="10"
+              cy="20"
+              r="1.5"
+            />
+
+            <circle
+              cx="18"
+              cy="20"
+              r="1.5"
+            />
           </svg>
 
           {cartCount > 0 && (
@@ -100,6 +154,7 @@ function Header({ onCartOpen }) {
           )}
         </button>
 
+        {/* Profile */}
         <div className="profile">
           <img
             src="/img/profile.jpg"

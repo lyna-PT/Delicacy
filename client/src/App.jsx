@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
 import Hero from "./components/Hero";
@@ -7,16 +7,14 @@ import Products from "./components/Products";
 import About from "./components/About";
 import Customers from "./components/Customers";
 import Footer from "./components/Footer";
-import Cart from "./components/Cart";
 
-import { CartProvider } from "./context/CartContext";
+import Login from "./components/Login";
+import Register from "./components/Register";
 
-function AppContent() {
-  const [cartOpen, setCartOpen] = useState(false);
-
+function Home() {
   return (
     <>
-      <Header onCartOpen={() => setCartOpen(true)} />
+      <Header />
 
       <main>
         <Hero />
@@ -27,20 +25,21 @@ function AppContent() {
       </main>
 
       <Footer />
-
-      <Cart
-        isOpen={cartOpen}
-        onClose={() => setCartOpen(false)}
-      />
     </>
   );
 }
 
 function App() {
   return (
-    <CartProvider>
-      <AppContent />
-    </CartProvider>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+
+        <Route path="/login" element={<Login />} />
+
+        <Route path="/register" element={<Register />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

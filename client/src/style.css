@@ -1,4 +1,7 @@
-/* google fonts */
+/* ========================================
+   GOOGLE FONTS
+======================================== */
+
 @font-face {
     font-family: "boxicons";
     src: url("/font/boxicons.ttf") format("truetype");
@@ -63,6 +66,11 @@
     --bg-color: #fff;
 }
 
+body {
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
 
 /* ========================================
    SCROLLBAR
@@ -112,7 +120,14 @@ header {
 /* ========================================
    LOGO
 ======================================== */
+.logo-icon {
+    width: 25px;
+    height: 25px;
 
+    color: var(--orange-color);
+
+    flex-shrink: 0;
+}
 .logo {
     display: flex;
     align-items: center;
@@ -211,12 +226,8 @@ header {
 }
 
 
-.swiper-button-next,
-.swiper-button-prev {
-    color: #000 !important;
-}
 /* ========================================
-   CART
+   HEADER CART
 ======================================== */
 
 .cart-button {
@@ -242,6 +253,41 @@ header {
 
 .cart-button:hover {
     color: var(--orange-color);
+}
+
+.cart-button svg {
+    width: 24px;
+    height: 24px;
+
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.cart-count {
+    position: absolute;
+
+    top: -8px;
+    right: -8px;
+
+    min-width: 17px;
+    height: 17px;
+
+    padding: 0 4px;
+
+    border-radius: 50%;
+
+    background: var(--orange-color);
+    color: #fff;
+
+    font-size: 10px;
+    font-weight: 600;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 
@@ -277,7 +323,7 @@ header {
 
 
 /* ========================================
-   HOME
+   HERO / HOME
 ======================================== */
 
 .container {
@@ -362,6 +408,16 @@ header {
     background: var(--light-orange-color);
 
     transition: 0.2s ease;
+}
+
+
+/* ========================================
+   SWIPER
+======================================== */
+
+.swiper-button-next,
+.swiper-button-prev {
+    color: #000 !important;
 }
 
 
@@ -547,38 +603,96 @@ header {
     color: var(--text-color);
 }
 
-.products-container .box .bx-cart-alt {
-    position: absolute;
 
-    right: 0;
-    bottom: 0;
+/* ========================================
+   PRODUCT CART BUTTON
+======================================== */
 
-    padding: 10px;
+.product-cart-button {
+    position: absolute !important;
 
-    background: var(--green-color);
-    color: var(--bg-color);
+    right: 0 !important;
+    bottom: 0 !important;
 
-    font-size: 20px;
+    width: 45px !important;
+    height: 45px !important;
 
-    border-radius: 0.5rem 0 0.5rem 0;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+
+    padding: 0 !important;
+
+    border: none !important;
+    outline: none !important;
+
+    background: var(--green-color) !important;
+    color: #fff !important;
+
+    border-radius: 0.5rem 0 0.5rem 0 !important;
+
+    cursor: pointer;
+
+    z-index: 10;
 }
 
-.products-container .box .bx-cart-alt:hover {
-    background: var(--orange-color);
+.product-cart-button svg {
+    width: 21px;
+    height: 21px;
 
-    transition: 0.2s all linear;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
-.products-container .box .bx-heart {
-    position: absolute;
-
-    top: 1rem;
-    right: 1rem;
-
-    font-size: 20px;
-
-    color: var(--light-orange-color);
+.product-cart-button:hover {
+    background: var(--orange-color) !important;
 }
+
+
+/* ========================================
+   PRODUCT HEART
+======================================== */
+
+.product-heart-button {
+    position: absolute !important;
+
+    top: 1rem !important;
+    right: 1rem !important;
+
+    width: auto !important;
+    height: auto !important;
+
+    padding: 0 !important;
+
+    border: none !important;
+    outline: none !important;
+
+    background: transparent !important;
+
+    color: #ff7e00 !important;
+
+    font-size: 25px !important;
+
+    line-height: 1 !important;
+
+    cursor: pointer;
+
+    z-index: 10;
+}
+
+.product-heart-button:hover {
+    transform: scale(1.1);
+
+    transition: 0.2s ease;
+}
+
+
+/* ========================================
+   DISCOUNT
+======================================== */
 
 .products-container .box .discount {
     position: absolute;
@@ -849,553 +963,6 @@ header {
 
 
 /* ========================================
-   RESPONSIVE
-======================================== */
-
-@media (max-width: 1080px) {
-
-    header {
-        padding: 18px 60px;
-    }
-
-    .home-text {
-        padding: 0 100px;
-    }
-
-    .container img {
-        right: 100px;
-    }
-}
-
-
-@media (max-width: 991px) {
-
-    header {
-        padding: 18px 4%;
-    }
-
-    section {
-        padding: 50px 4%;
-    }
-
-    .home-text h1 {
-        font-size: 2rem;
-    }
-
-    .home-text {
-        padding: 0 5%;
-    }
-
-    .swiper-button-next,
-    .swiper-button-prev {
-        margin: 0;
-    }
-}
-
-
-/* ========================================
-   MOBILE
-======================================== */
-
-@media (max-width: 852px) {
-
-    header {
-        padding: 12px 4%;
-    }
-
-    /* Hamburger is visible ONLY on mobile */
-    .mobile-menu-button {
-        display: flex;
-    }
-
-    /*
-       Keep the three main header items:
-       Logo | Menu | Actions
-    */
-    .logo {
-        order: 1;
-    }
-
-    .mobile-menu-button {
-        order: 2;
-    }
-
-    .header-actions {
-        order: 3;
-
-        gap: 0.8rem;
-    }
-
-
-    /* Mobile navigation */
-
-    .navbar {
-        position: absolute;
-
-        top: 100%;
-        left: 0;
-        right: 0;
-
-        width: 100%;
-
-        display: flex;
-        flex-direction: column;
-
-        align-items: stretch;
-
-        background: var(--bg-color);
-
-        box-shadow: 4px 8px 11px rgb(14 55 54 / 15%);
-
-        text-align: left;
-
-        padding: 0.5rem 0;
-
-        transform: translateY(-20px);
-
-        opacity: 0;
-
-        visibility: hidden;
-
-        pointer-events: none;
-
-        transition:
-            transform 0.25s ease,
-            opacity 0.25s ease,
-            visibility 0.25s ease;
-    }
-
-    .navbar.active {
-        transform: translateY(0);
-
-        opacity: 1;
-
-        visibility: visible;
-
-        pointer-events: auto;
-    }
-
-    .navbar li {
-        width: 100%;
-    }
-
-    .navbar a {
-        display: block;
-
-        width: calc(100% - 2rem);
-
-        padding: 1rem;
-
-        margin: 0.5rem 1rem;
-    }
-
-    .navbar a:hover,
-    .navbar .home-active {
-        border-radius: 0.5rem;
-
-        background: var(--green-color);
-
-        color: var(--bg-color);
-    }
-
-
-    /* Profile on mobile */
-
-    .profile span {
-        display: none;
-    }
-
-    .profile .bx-caret-down {
-        display: none;
-    }
-
-    .profile img {
-        width: 34px;
-        height: 34px;
-    }
-
-
-    /* Cart */
-
-    .cart-button {
-        font-size: 22px;
-    }
-
-
-    /* Swiper arrows */
-
-    .swiper-button-next,
-    .swiper-button-prev {
-        color: #000 !important;
-
-        width: 24px !important;
-        height: 24px !important;
-    }
-
-    .swiper-button-next::after,
-    .swiper-button-prev::after {
-        font-size: 17px !important;
-    }
-
-
-    .home-text h1 {
-        font-size: 1.7rem;
-    }
-
-    .container img {
-        width: 390px;
-    }
-
-    .btn {
-        padding: 0.6rem 1.2rem;
-    }
-
-    .products-container {
-        grid-template-columns: repeat(auto-fit, minmax(244px, auto));
-    }
-}
-
-
-/* ========================================
-   TABLET / SMALL
-======================================== */
-
-@media (max-width: 712px) {
-
-    .container img {
-        right: 20px;
-    }
-
-    .heading h1 {
-        font-size: 1.2rem;
-    }
-
-    .about {
-        grid-template-columns: repeat(auto-fit, minmax(20rem, auto));
-    }
-
-    .about img {
-        order: 2;
-    }
-
-    .about-text {
-        text-align: center;
-
-        display: flex;
-        flex-direction: column;
-
-        align-items: center;
-        justify-content: center;
-    }
-
-    .btn {
-        max-width: 164px;
-    }
-
-    .customers h2 {
-        font-size: 1.2rem;
-    }
-}
-
-
-/* ========================================
-   SMALL TABLET
-======================================== */
-
-@media (max-width: 642px) {
-
-    .container img {
-        right: 0;
-
-        width: 370px;
-    }
-}
-
-
-/* ========================================
-   SMALL MOBILE
-======================================== */
-
-@media (max-width: 546px) {
-
-    .container img {
-        right: 0;
-
-        width: 370px;
-
-        height: 820px;
-
-        object-fit: contain;
-    }
-
-
-    /* Smaller black arrows */
-
-    .swiper-button-next,
-    .swiper-button-prev {
-        color: #000 !important;
-
-        width: 20px !important;
-        height: 20px !important;
-    }
-
-    .swiper-button-next::after,
-    .swiper-button-prev::after {
-        font-size: 14px !important;
-    }
-
-
-    .header-actions {
-        gap: 0.5rem;
-    }
-
-    .cart-button {
-        font-size: 20px;
-    }
-}
-
-
-/* ========================================
-   VERY SMALL MOBILE
-======================================== */
-
-@media (max-width: 370px) {
-
-    .logo {
-        font-size: 1rem;
-    }
-
-    .profile img {
-        width: 30px;
-        height: 30px;
-    }
-
-    .home-text {
-        padding-bottom: 17rem;
-    }
-
-    .home-text span {
-        font-size: 0.8rem;
-    }
-
-    .home-text h1 {
-        font-size: 1.4rem;
-    }
-
-    .heading {
-        flex-direction: column;
-
-        text-align: center;
-    }
-
-    .heading .btn {
-        margin-top: 1rem;
-    }
-
-    .categories-container {
-        gap: 1.5rem;
-    }
-
-
-    /* Keep hamburger usable on very small screens */
-
-    .mobile-menu-button {
-        width: 28px;
-        height: 28px;
-    }
-
-    .mobile-menu-button span {
-        width: 20px;
-        height: 2px;
-    }
-}
-/* ========================================
-   PRODUCT ACTION BUTTONS
-======================================== */
-
-.product-cart-button {
-    position: absolute;
-
-    right: 0;
-    bottom: 0;
-
-    width: 45px;
-    height: 45px;
-
-    border: none;
-    outline: none;
-
-    background: var(--green-color);
-    color: var(--bg-color);
-
-    font-size: 20px;
-
-    border-radius: 0.5rem 0 0.5rem 0;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    cursor: pointer;
-}
-
-.product-cart-button:hover {
-    background: var(--orange-color);
-
-    transition: 0.2s all linear;
-}
-
-
-/* Wishlist */
-
-.product-heart-button {
-    position: absolute;
-
-    top: 1rem;
-    right: 1rem;
-
-    border: none;
-    outline: none;
-
-    background: transparent;
-
-    color: var(--light-orange-color);
-
-    font-size: 20px;
-
-    cursor: pointer;
-}
-
-.product-heart-button:hover {
-    transform: scale(1.1);
-
-    transition: 0.2s ease;
-}
-/* ========================================
-   PRODUCT CART BUTTON
-======================================== */
-.product-cart-button {
-    position: absolute !important;
-
-    right: 0 !important;
-    bottom: 0 !important;
-
-    width: 45px !important;
-    height: 45px !important;
-
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-
-    padding: 0 !important;
-
-    border: none !important;
-    outline: none !important;
-
-    background: var(--green-color) !important;
-    color: #fff !important;
-
-    border-radius: 0.5rem 0 0.5rem 0 !important;
-
-    cursor: pointer;
-
-    z-index: 10;
-}
-
-.product-cart-button svg {
-    width: 21px;
-    height: 21px;
-
-    fill: none;
-    stroke: #fff;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.product-cart-button:hover {
-    background: var(--orange-color) !important;
-}
-
-/* ========================================
-   PRODUCT HEART
-======================================== */
-
-.product-heart-button {
-    position: absolute !important;
-
-    top: 1rem !important;
-    right: 1rem !important;
-
-    width: auto !important;
-    height: auto !important;
-
-    padding: 0 !important;
-
-    border: none !important;
-    outline: none !important;
-
-    background: transparent !important;
-
-    color: #ff7e00 !important;
-
-    font-size: 25px !important;
-
-    line-height: 1 !important;
-
-    cursor: pointer;
-
-    z-index: 10;
-}
-
-.product-heart-button:hover {
-    transform: scale(1.1);
-}
-/* ========================================
-   CART ICON
-======================================== */
-
-.cart-button {
-    position: relative;
-}
-
-.cart-button svg {
-    width: 24px;
-    height: 24px;
-
-    fill: none;
-    stroke: currentColor;
-    stroke-width: 2;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-}
-
-.cart-count {
-    position: absolute;
-
-    top: -8px;
-    right: -8px;
-
-    min-width: 17px;
-    height: 17px;
-
-    padding: 0 4px;
-
-    border-radius: 50%;
-
-    background: var(--orange-color);
-    color: #fff;
-
-    font-size: 10px;
-    font-weight: 600;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-
-/* ========================================
    CART OVERLAY
 ======================================== */
 
@@ -1534,11 +1101,13 @@ header {
 
 .empty-cart h3 {
     font-size: 1.1rem;
+
     margin-bottom: 0.4rem;
 }
 
 .empty-cart p {
     color: #868a92;
+
     font-size: 0.9rem;
 }
 
@@ -1750,10 +1319,313 @@ header {
 
 
 /* ========================================
-   MOBILE CART
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 1080px) {
+
+    header {
+        padding: 18px 60px;
+    }
+
+    .home-text {
+        padding: 0 100px;
+    }
+
+    .container img {
+        right: 100px;
+    }
+}
+
+
+@media (max-width: 991px) {
+
+    header {
+        padding: 18px 4%;
+    }
+
+    section {
+        padding: 50px 4%;
+    }
+
+    .home-text h1 {
+        font-size: 2rem;
+    }
+
+    .home-text {
+        padding: 0 5%;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        margin: 0;
+    }
+}
+
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 852px) {
+
+    header {
+        padding: 12px 4%;
+    }
+
+    /* Hamburger ONLY on mobile */
+    .mobile-menu-button {
+        display: flex;
+    }
+
+    .logo {
+        order: 1;
+    }
+
+    .mobile-menu-button {
+        order: 2;
+    }
+
+    .header-actions {
+        order: 3;
+
+        gap: 0.8rem;
+    }
+
+
+    /* Mobile navigation */
+
+    .navbar {
+        position: absolute;
+
+        top: 100%;
+        left: 0;
+        right: 0;
+
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: stretch;
+
+        background: var(--bg-color);
+
+        box-shadow: 4px 8px 11px rgb(14 55 54 / 15%);
+
+        text-align: left;
+
+        padding: 0.5rem 0;
+
+        transform: translateY(-20px);
+
+        opacity: 0;
+
+        visibility: hidden;
+
+        pointer-events: none;
+
+        transition:
+            transform 0.25s ease,
+            opacity 0.25s ease,
+            visibility 0.25s ease;
+    }
+
+    .navbar.active {
+        transform: translateY(0);
+
+        opacity: 1;
+
+        visibility: visible;
+
+        pointer-events: auto;
+    }
+
+    .navbar li {
+        width: 100%;
+    }
+
+    .navbar a {
+        display: block;
+
+        width: calc(100% - 2rem);
+
+        padding: 1rem;
+
+        margin: 0.5rem 1rem;
+    }
+
+    .navbar a:hover,
+    .navbar .home-active {
+        border-radius: 0.5rem;
+
+        background: var(--green-color);
+
+        color: var(--bg-color);
+    }
+
+
+    /* Profile */
+
+    .profile span {
+        display: none;
+    }
+
+    .profile .bx-caret-down {
+        display: none;
+    }
+
+    .profile img {
+        width: 34px;
+        height: 34px;
+    }
+
+
+    /* Header cart */
+
+    .cart-button {
+        font-size: 22px;
+    }
+
+
+    /* Swiper arrows */
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #000 !important;
+
+        width: 24px !important;
+        height: 24px !important;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 17px !important;
+    }
+
+
+    /* Hero */
+
+    .home-text h1 {
+        font-size: 1.7rem;
+    }
+
+    .container img {
+        width: 390px;
+    }
+
+    .btn {
+        padding: 0.6rem 1.2rem;
+    }
+
+
+    /* Products */
+
+    .products-container {
+        grid-template-columns: repeat(auto-fit, minmax(244px, auto));
+    }
+}
+
+
+/* ========================================
+   TABLET / SMALL
+======================================== */
+
+@media (max-width: 712px) {
+
+    .container img {
+        right: 20px;
+    }
+
+    .heading h1 {
+        font-size: 1.2rem;
+    }
+
+    .about {
+        grid-template-columns: repeat(auto-fit, minmax(20rem, auto));
+    }
+
+    .about img {
+        order: 2;
+    }
+
+    .about-text {
+        text-align: center;
+
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    .btn {
+        max-width: 164px;
+    }
+
+    .customers h2 {
+        font-size: 1.2rem;
+    }
+}
+
+
+/* ========================================
+   SMALL TABLET
+======================================== */
+
+@media (max-width: 642px) {
+
+    .container img {
+        right: 0;
+
+        width: 370px;
+    }
+}
+
+
+/* ========================================
+   SMALL MOBILE
 ======================================== */
 
 @media (max-width: 546px) {
+
+    .container img {
+        right: 0;
+
+        width: 370px;
+
+        height: 820px;
+
+        object-fit: contain;
+    }
+
+
+    /* Smaller arrows */
+
+    .swiper-button-next,
+    .swiper-button-prev {
+        color: #000 !important;
+
+        width: 20px !important;
+        height: 20px !important;
+    }
+
+    .swiper-button-next::after,
+    .swiper-button-prev::after {
+        font-size: 14px !important;
+    }
+
+
+    .header-actions {
+        gap: 0.5rem;
+    }
+
+    .cart-button {
+        font-size: 20px;
+    }
+
+
+    /* Mobile cart */
 
     .cart-panel {
         width: 100%;
@@ -1764,5 +1636,257 @@ header {
     .cart-item img {
         width: 65px;
         height: 65px;
+    }
+}
+
+
+/* ========================================
+   VERY SMALL MOBILE
+======================================== */
+
+@media (max-width: 370px) {
+
+    .logo {
+        font-size: 1rem;
+    }
+
+    .profile img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .home-text {
+        padding-bottom: 17rem;
+    }
+
+    .home-text span {
+        font-size: 0.8rem;
+    }
+
+    .home-text h1 {
+        font-size: 1.4rem;
+    }
+
+    .heading {
+        flex-direction: column;
+
+        text-align: center;
+    }
+
+    .heading .btn {
+        margin-top: 1rem;
+    }
+
+    .categories-container {
+        gap: 1.5rem;
+    }
+
+
+    /* Hamburger */
+
+    .mobile-menu-button {
+        width: 28px;
+        height: 28px;
+    }
+
+    .mobile-menu-button span {
+        width: 20px;
+        height: 2px;
+    }
+}
+/* ========================================
+   AUTHENTICATION
+======================================== */
+
+.auth-page {
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 120px 20px 40px;
+
+    background: #f7f7f7;
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 430px;
+
+    background: #fff;
+
+    padding: 35px;
+
+    border-radius: 12px;
+
+    box-shadow: 1px 2px 11px 4px rgb(14 55 54 / 10%);
+}
+
+.auth-header {
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+.auth-header .logo {
+    justify-content: center;
+
+    margin-bottom: 25px;
+}
+
+.auth-header .logo .bx {
+    color: var(--orange-color);
+
+    font-size: 24px;
+}
+
+.auth-header h1 {
+    font-size: 1.7rem;
+
+    font-weight: 600;
+
+    margin-bottom: 5px;
+}
+
+.auth-header p {
+    color: #868a92;
+
+    font-size: 0.9rem;
+}
+
+.auth-form {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.form-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 7px;
+}
+
+.form-group label {
+    font-size: 0.9rem;
+
+    font-weight: 500;
+}
+
+.form-group input {
+    width: 100%;
+
+    padding: 12px 14px;
+
+    border: 1px solid #ddd;
+
+    border-radius: 8px;
+
+    outline: none;
+
+    font-family: inherit;
+
+    font-size: 0.9rem;
+
+    transition: 0.2s ease;
+}
+
+.form-group input:focus {
+    border-color: var(--green-color);
+}
+
+.auth-button {
+    width: 100%;
+
+    border: none;
+
+    padding: 13px;
+
+    margin-top: 5px;
+
+    border-radius: 5rem;
+
+    background: var(--green-color);
+
+    color: #fff;
+
+    font-family: inherit;
+
+    font-size: 1rem;
+
+    font-weight: 500;
+
+    cursor: pointer;
+
+    transition: 0.2s ease;
+}
+
+.auth-button:hover {
+    background: var(--orange-color);
+}
+
+.auth-button:disabled {
+    opacity: 0.6;
+
+    cursor: not-allowed;
+}
+
+.auth-error {
+    background: #ffe8e8;
+
+    color: #c62828;
+
+    padding: 10px 12px;
+
+    border-radius: 7px;
+
+    font-size: 0.85rem;
+
+    margin-bottom: 18px;
+
+    text-align: center;
+}
+
+.auth-switch {
+    text-align: center;
+
+    margin-top: 20px;
+
+    color: #868a92;
+
+    font-size: 0.9rem;
+}
+
+.auth-switch a {
+    color: var(--green-color);
+
+    font-weight: 600;
+}
+
+.auth-switch a:hover {
+    color: var(--orange-color);
+}
+
+
+/* ========================================
+   AUTH MOBILE
+======================================== */
+
+@media (max-width: 500px) {
+
+    .auth-page {
+        padding: 100px 15px 30px;
+    }
+
+    .auth-container {
+        padding: 25px 20px;
+    }
+
+    .auth-header h1 {
+        font-size: 1.5rem;
     }
 }

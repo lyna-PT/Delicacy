@@ -1,20 +1,25 @@
-import { Navigation, Autoplay } from "swiper/modules";
+import { Autoplay, Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+
+import "swiper/css";
+import "swiper/css/navigation";
 
 const slides = ["home1.png", "home2.png", "home3.png"];
 
 function Hero() {
   return (
-    <section id="home">
+    <section id="home" className="hero-section">
       <Swiper
-        className="swiper-container"
+        className="hero-swiper"
         modules={[Navigation, Autoplay]}
         navigation
-        loop
+        loop={true}
         autoplay={{
           delay: 4000,
           disableOnInteraction: false,
         }}
+        slidesPerView={1}
+        spaceBetween={0}
       >
         {slides.map((image) => (
           <SwiperSlide key={image}>
@@ -30,11 +35,15 @@ function Hero() {
 
                 <a href="#products" className="btn">
                   Shop Now
-                  <i className="bx bx-right-arrow-alt" />
+                  <i className="bx bx-right-arrow-alt"></i>
                 </a>
               </div>
 
-              <img src={`/img/${image}`} alt="Healthy food" />
+              <img
+                src={`/img/${image}`}
+                alt="Healthy food"
+                className="hero-image"
+              />
             </div>
           </SwiperSlide>
         ))}
