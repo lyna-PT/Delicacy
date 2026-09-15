@@ -1,9 +1,12 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import api from "../services/api";
+
+import { useAuth } from "../context/AuthContext";
 
 function Login() {
   const navigate = useNavigate();
+
+  const { login } = useAuth();
 
   const [formData, setFormData] = useState({
     email: "",
@@ -33,19 +36,14 @@ function Login() {
     try {
       setLoading(true);
 
-      const response = await api.post("/auth/login", formData);
+      const data = await login(
+        formData.email,
+        formData.password
+      );
 
-      console.log("Login successful:", response.data);
-
-      if (response.data.token) {
-        localStorage.setItem("token", response.data.token);
-      }
-
-      if (response.data.user) {
-        localStorage.setItem(
-          "user",
-          JSON.stringify(response.data.user)
-        );
+      if (!data.success) {
+        setError(data.message || "Login failed.");
+        return;
       }
 
       navigate("/");
@@ -65,20 +63,30 @@ function Login() {
     <div className="auth-page">
       <div className="auth-container">
         <div className="auth-header">
-          <a href="#home" className="logo">
+          <a href="/" className="logo">
             <i className="bx bxs-basket"></i>
             Delicacy
           </a>
 
           <h1>Welcome Back</h1>
+
           <p>Login to your Delicacy account</p>
         </div>
 
-        {error && <div className="auth-error">{error}</div>}
+        {error && (
+          <div className="auth-error">
+            {error}
+          </div>
+        )}
 
-        <form onSubmit={handleSubmit} className="auth-form">
+        <form
+          onSubmit={handleSubmit}
+          className="auth-form"
+        >
           <div className="form-group">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">
+              Email
+            </label>
 
             <input
               type="email"
@@ -92,7 +100,9 @@ function Login() {
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">
+              Password
+            </label>
 
             <input
               type="password"
@@ -110,13 +120,17 @@ function Login() {
             className="auth-button"
             disabled={loading}
           >
-            {loading ? "Logging in..." : "Login"}
+            {loading
+              ? "Logging in..."
+              : "Login"}
           </button>
         </form>
 
         <p className="auth-switch">
           Don't have an account?{" "}
-          <Link to="/register">Create one</Link>
+          <Link to="/register">
+            Create one
+          </Link>
         </p>
       </div>
     </div>

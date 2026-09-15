@@ -1,7 +1,13 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
+
 import api from "../services/api";
 
-const AuthContext = createContext();
+const AuthContext = createContext(null);
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(null);
@@ -21,6 +27,9 @@ export function AuthProvider({ children }) {
 
         if (response.data.success) {
           setUser(response.data.user);
+        } else {
+          localStorage.removeItem("token");
+          setUser(null);
         }
       } catch (error) {
         console.error("Failed to restore login:", error);
@@ -51,8 +60,9 @@ export function AuthProvider({ children }) {
       password,
     });
 
-    if (response.data.success) {
+    if (response.data.success && response.data.token) {
       localStorage.setItem("token", response.data.token);
+
       setUser(response.data.user);
     }
 
@@ -61,6 +71,7 @@ export function AuthProvider({ children }) {
 
   const logout = () => {
     localStorage.removeItem("token");
+
     setUser(null);
   };
 
