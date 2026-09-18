@@ -1,6 +1,10 @@
+import { useNavigate } from "react-router-dom";
 import { useCart } from "../context/CartContext";
+import { useAuth } from "../context/AuthContext";
 
 function Cart({ isOpen, onClose }) {
+  const navigate = useNavigate();
+
   const {
     cartItems,
     cartTotal,
@@ -10,100 +14,144 @@ function Cart({ isOpen, onClose }) {
     clearCart,
   } = useCart();
 
+  const { user } = useAuth();
+
+  const handleCheckout = () => {
+    onClose();
+
+    if (!user) {
+      navigate("/login");
+      return;
+    }
+
+    navigate("/checkout");
+  };
+
   return (
-    <div className={`cart-overlay ${isOpen ? "active" : ""}`}>
-      <div className="cart-panel">
+    <>
+      {isOpen && (
+        <div
+          className="cart-overlay"
+          onClick={onClose}
+          aria-hidden="true"
+        ></div>
+      )}
+
+      <aside className={`cart-panel ${isOpen ? "active" : ""}`}>
         <div className="cart-header">
-          <h2>Your Cart</h2>
+          <div>
+            <span>Your Shopping Cart</span>
+            <h2>Cart</h2>
+          </div>
 
           <button
             type="button"
-            className="cart-close"
+            className="cart-close-button"
             onClick={onClose}
             aria-label="Close cart"
           >
-            ×
+            <i className="bx bx-x"></i>
           </button>
         </div>
 
         {cartItems.length === 0 ? (
           <div className="empty-cart">
-            <div className="empty-cart-icon">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M3 3h2l2.4 11.2a2 2 0 0 0 2 1.6h7.8a2 2 0 0 0 1.9-1.4L21 7H6" />
-                <circle cx="10" cy="20" r="1.5" />
-                <circle cx="18" cy="20" r="1.5" />
-              </svg>
-            </div>
+            <i className="bx bx-cart"></i>
 
             <h3>Your cart is empty</h3>
-            <p>Add some products to get started.</p>
+
+            <p>
+              Add some fresh products to your cart and they will
+              appear here.
+            </p>
+
+            <button
+              type="button"
+              className="btn"
+              onClick={onClose}
+            >
+              Start Shopping
+              <i className="bx bx-right-arrow-alt"></i>
+            </button>
           </div>
         ) : (
           <>
             <div className="cart-items">
-              {cartItems.map((item) => (
-                <div className="cart-item" key={item.image}>
-                  <img
-                    src={`/img/${item.image}`}
-                    alt={item.name}
-                  />
+              {cartItems.map((item) => {
+                const price = parseFloat(
+                  String(item.price).replace(/[^0-9.]/g, "")
+                );
 
-                  <div className="cart-item-info">
-                    <h3>{item.name}</h3>
+                return (
+                  <div className="cart-item" key={item.image}>
+                    <img
+                      src={`/img/${item.image}`}
+                      alt={item.name}
+                    />
 
-                    <span className="cart-item-price">
-                      {item.price}
-                    </span>
+                    <div className="cart-item-info">
+                      <h3>{item.name}</h3>
 
-                    <div className="quantity-controls">
-                      <button
-                        type="button"
-                        onClick={() =>
-                          decreaseQuantity(item.image)
-                        }
-                      >
-                        −
-                      </button>
+                      <span className="cart-item-price">
+                        ${price.toFixed(2)}
+                      </span>
 
-                      <span>{item.quantity}</span>
+                      <div className="quantity-controls">
+                        <button
+                          type="button"
+                          onClick={() =>
+                            decreaseQuantity(item.image)
+                          }
+                          aria-label="Decrease quantity"
+                        >
+                          −
+                        </button>
 
-                      <button
-                        type="button"
-                        onClick={() =>
-                          increaseQuantity(item.image)
-                        }
-                      >
-                        +
-                      </button>
+                        <span>{item.quantity}</span>
+
+                        <button
+                          type="button"
+                          onClick={() =>
+                            increaseQuantity(item.image)
+                          }
+                          aria-label="Increase quantity"
+                        >
+                          +
+                        </button>
+                      </div>
                     </div>
-                  </div>
 
-                  <button
-                    type="button"
-                    className="remove-cart-item"
-                    onClick={() =>
-                      removeFromCart(item.image)
-                    }
-                    aria-label={`Remove ${item.name}`}
-                  >
-                    ×
-                  </button>
-                </div>
-              ))}
+                    <button
+                      type="button"
+                      className="remove-cart-item"
+                      onClick={() =>
+                        removeFromCart(item.image)
+                      }
+                      aria-label={`Remove ${item.name}`}
+                    >
+                      <i className="bx bx-trash"></i>
+                    </button>
+                  </div>
+                );
+              })}
             </div>
 
             <div className="cart-footer">
               <div className="cart-total">
                 <span>Total</span>
-                <strong>${cartTotal.toFixed(2)}</strong>
+
+                <strong>
+                  ${cartTotal.toFixed(2)}
+                </strong>
               </div>
 
               <button
                 type="button"
                 className="checkout-button"
+                onClick={handleCheckout}
               >
-                Checkout
+                {user ? "Proceed to Checkout" : "Login to Checkout"}
+                <i className="bx bx-right-arrow-alt"></i>
               </button>
 
               <button
@@ -116,8 +164,8 @@ function Cart({ isOpen, onClose }) {
             </div>
           </>
         )}
-      </div>
-    </div>
+      </aside>
+    </>
   );
 }
 

@@ -1,44 +1,35 @@
+import { useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 import Header from "./components/Header";
-import Hero from "./components/Hero";
-import Categories from "./components/Categories";
-import Products from "./components/Products";
-import About from "./components/About";
-import Customers from "./components/Customers";
-import Footer from "./components/Footer";
-
+import Home from "./components/Home";
 import Login from "./components/Login";
 import Register from "./components/Register";
-
-function Home() {
-  return (
-    <>
-      <Header />
-
-      <main>
-        <Hero />
-        <Categories />
-        <Products />
-        <About />
-        <Customers />
-      </main>
-
-      <Footer />
-    </>
-  );
-}
+import Cart from "./components/Cart";
+import Checkout from "./components/Checkout";
 
 function App() {
+  const [cartOpen, setCartOpen] = useState(false);
+
   return (
     <BrowserRouter>
+      <Header onCartOpen={() => setCartOpen(true)} />
+
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route
+          path="/"
+          element={<Home onCartOpen={() => setCartOpen(true)} />}
+        />
 
         <Route path="/login" element={<Login />} />
-
         <Route path="/register" element={<Register />} />
+        <Route path="/checkout" element={<Checkout />} />
       </Routes>
+
+      <Cart
+        isOpen={cartOpen}
+        onClose={() => setCartOpen(false)}
+      />
     </BrowserRouter>
   );
 }

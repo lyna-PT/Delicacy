@@ -1890,3 +1890,809 @@ header {
         font-size: 1.5rem;
     }
 }
+
+/* =========================
+   Authentication Header
+========================= */
+
+.auth-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-login,
+.header-register {
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.header-login {
+    color: var(--text-color);
+}
+
+.header-login:hover {
+    color: var(--green-color);
+}
+
+.header-register {
+    background: var(--green-color);
+    color: var(--bg-color);
+    padding: 8px 16px;
+    border-radius: 5px;
+}
+
+.header-register:hover {
+    background: var(--text-color);
+    color: var(--bg-color);
+}
+
+
+/* Profile */
+
+.profile-wrapper {
+    position: relative;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: transparent;
+    cursor: pointer;
+    padding: 0;
+}
+
+.profile img {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile span {
+    font-weight: 500;
+    color: var(--text-color);
+}
+
+.profile i {
+    font-size: 18px;
+}
+
+
+/* Profile dropdown */
+
+.profile-dropdown {
+    position: absolute;
+    top: calc(100% + 12px);
+    right: 0;
+    width: 220px;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    padding: 12px;
+    z-index: 1000;
+}
+
+.profile-dropdown-user {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px 10px 12px;
+    border-bottom: 1px solid #eee;
+}
+
+.profile-dropdown-user strong {
+    color: var(--text-color);
+    font-size: 15px;
+}
+
+.profile-dropdown-user span {
+    color: #777;
+    font-size: 13px;
+    word-break: break-word;
+}
+
+.logout-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    background: transparent;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+    text-align: left;
+}
+
+.logout-button:hover {
+    background: #f5f5f5;
+}
+/* ========================================
+   LOGGED-IN HOME
+======================================== */
+
+.welcome-home {
+    max-width: 968px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    background: #fef4ea;
+    border-radius: 0.8rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 2rem;
+}
+
+.welcome-home-content span,
+.guest-intro-content > span,
+.guest-cta > span,
+.member-benefits-heading > span {
+    color: var(--green-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+}
+
+.welcome-home h1 {
+    font-size: 2rem;
+    margin: 0.4rem 0 0.8rem;
+}
+
+.welcome-home h1 span {
+    color: var(--green-color);
+    text-transform: none;
+    font-size: inherit;
+}
+
+.welcome-home p {
+    color: #666;
+    line-height: 1.7;
+}
+
+.welcome-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.welcome-cart-button {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+
+    border: 1px solid var(--green-color);
+    background: transparent;
+    color: var(--green-color);
+
+    padding: 0.6rem 1rem;
+    border-radius: 5rem;
+
+    cursor: pointer;
+    font-family: inherit;
+}
+
+.welcome-cart-button:hover {
+    background: var(--green-color);
+    color: var(--bg-color);
+}
+
+.welcome-home-icon {
+    width: 110px;
+    height: 110px;
+
+    border-radius: 50%;
+
+    background: var(--green-color);
+    color: var(--bg-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-shrink: 0;
+}
+
+.welcome-home-icon i {
+    font-size: 3rem;
+}
+
+
+/* ========================================
+   MEMBER BENEFITS
+======================================== */
+
+.member-benefits {
+    max-width: 968px;
+    margin: 0 auto;
+    padding: 4rem 0 2rem;
+}
+
+.member-benefits-heading {
+    text-align: center;
+}
+
+.member-benefits-heading h2 {
+    font-size: 1.8rem;
+    margin-top: 0.5rem;
+}
+
+.member-benefits-heading h2 strong {
+    color: var(--green-color);
+}
+
+.member-benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.2rem;
+    margin-top: 2rem;
+}
+
+.member-benefit-card {
+    padding: 1.5rem;
+    text-align: center;
+
+    border-radius: 0.6rem;
+    background: #fff;
+
+    box-shadow: 1px 2px 11px 4px rgb(14 55 54 / 10%);
+}
+
+.member-benefit-card i {
+    font-size: 2rem;
+    color: var(--green-color);
+}
+
+.member-benefit-card h3 {
+    margin: 0.8rem 0 0.4rem;
+}
+
+.member-benefit-card p {
+    color: #777;
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+
+/* ========================================
+   LOGGED-OUT INTRO
+======================================== */
+
+.guest-intro {
+    max-width: 968px;
+    margin: 0 auto;
+
+    padding: 4rem 0;
+
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+
+    align-items: center;
+}
+
+.guest-intro-content h2 {
+    font-size: 2rem;
+    margin: 0.5rem 0 1rem;
+}
+
+.guest-intro-content h2 strong {
+    color: var(--green-color);
+}
+
+.guest-intro-content p {
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 1.5rem;
+}
+
+.guest-intro-cards {
+    display: grid;
+    gap: 1rem;
+}
+
+.guest-intro-cards > div {
+    padding: 1.2rem;
+
+    border-radius: 0.6rem;
+
+    background: #fef4ea;
+
+    display: grid;
+    grid-template-columns: 45px 1fr;
+    column-gap: 0.8rem;
+    align-items: center;
+}
+
+.guest-intro-cards i {
+    grid-row: span 2;
+
+    font-size: 1.8rem;
+    color: var(--green-color);
+}
+
+.guest-intro-cards h3 {
+    font-size: 1rem;
+}
+
+.guest-intro-cards p {
+    font-size: 0.85rem;
+    color: #777;
+}
+
+
+/* ========================================
+   GUEST CTA
+======================================== */
+
+.guest-cta {
+    max-width: 968px;
+    margin: 3rem auto;
+
+    padding: 4rem 2rem;
+
+    text-align: center;
+
+    background: #e9f4e3;
+    border-radius: 0.8rem;
+}
+
+.guest-cta h2 {
+    font-size: 2rem;
+    margin: 0.5rem 0;
+}
+
+.guest-cta p {
+    color: #666;
+    margin-bottom: 1.5rem;
+}
+
+.guest-cta .btn {
+    margin: 0 auto;
+}
+
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 712px) {
+    .welcome-home {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        padding: 2rem 1.5rem;
+    }
+
+    .welcome-home-icon {
+        width: 80px;
+        height: 80px;
+    }
+
+    .welcome-home-icon i {
+        font-size: 2rem;
+    }
+
+    .member-benefits {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .member-benefits-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .guest-intro {
+        margin-left: 1rem;
+        margin-right: 1rem;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .guest-cta {
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+}
+
+@media (max-width: 546px) {
+    .welcome-home {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .welcome-actions {
+        flex-direction: column;
+    }
+
+    .guest-intro-content {
+        text-align: center;
+    }
+
+    .guest-intro-content .btn {
+        margin: 0 auto;
+    }
+
+    .guest-cta h2,
+    .guest-intro-content h2,
+    .welcome-home h1 {
+        font-size: 1.6rem;
+    }
+}
+/* ========================================
+   CHECKOUT PAGE
+======================================== */
+
+.checkout-page {
+    width: 100%;
+    min-height: 100vh;
+    padding: 130px 7% 80px;
+    background: #fafafa;
+}
+
+.checkout-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.checkout-heading {
+    margin-bottom: 40px;
+}
+
+.checkout-heading span {
+    color: var(--orange-color);
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.checkout-heading h1 {
+    font-size: 2.5rem;
+    margin: 5px 0 10px;
+}
+
+.checkout-heading p {
+    color: #777;
+    max-width: 600px;
+    line-height: 1.7;
+}
+
+.checkout-grid {
+    display: grid;
+    grid-template-columns: 1.4fr 0.9fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.checkout-card {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 30px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+
+.checkout-card-heading {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+.checkout-card-heading > i {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--green-color);
+    color: #fff;
+    font-size: 1.3rem;
+}
+
+.checkout-card-heading h2 {
+    font-size: 1.2rem;
+    margin-bottom: 3px;
+}
+
+.checkout-card-heading p {
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.checkout-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.checkout-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checkout-field-full {
+    grid-column: 1 / -1;
+}
+
+.checkout-field label {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.checkout-field input,
+.checkout-field textarea {
+    width: 100%;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.6rem;
+    padding: 13px 15px;
+    font-family: inherit;
+    font-size: 0.9rem;
+    outline: none;
+    transition: 0.2s ease;
+    background: #fff;
+}
+
+.checkout-field textarea {
+    resize: vertical;
+}
+
+.checkout-field input:focus,
+.checkout-field textarea:focus {
+    border-color: var(--green-color);
+    box-shadow: 0 0 0 3px rgba(0, 128, 0, 0.06);
+}
+
+.checkout-summary {
+    background: #fff;
+    border-radius: 1rem;
+    padding: 30px;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+    position: sticky;
+    top: 110px;
+}
+
+.checkout-summary-header {
+    border-bottom: 1px solid #eee;
+    padding-bottom: 20px;
+    margin-bottom: 10px;
+}
+
+.checkout-summary-header span {
+    color: var(--orange-color);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.checkout-summary-header h2 {
+    font-size: 1.4rem;
+    margin-top: 5px;
+}
+
+.checkout-summary-items {
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.checkout-summary-item {
+    display: grid;
+    grid-template-columns: 60px 1fr auto;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.checkout-summary-item img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+.checkout-summary-item h3 {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    margin-bottom: 4px;
+}
+
+.checkout-summary-item span {
+    color: #888;
+    font-size: 0.78rem;
+}
+
+.checkout-summary-item > strong {
+    font-size: 0.85rem;
+    white-space: nowrap;
+}
+
+.checkout-summary-details {
+    padding-top: 20px;
+}
+
+.checkout-summary-details > div {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 13px;
+    font-size: 0.9rem;
+}
+
+.checkout-summary-details > div span {
+    color: #777;
+}
+
+.checkout-summary-details > div strong {
+    font-weight: 600;
+}
+
+.checkout-summary-total {
+    border-top: 1px solid #eee;
+    padding-top: 18px;
+    margin-top: 18px;
+}
+
+.checkout-summary-total span {
+    color: #222 !important;
+    font-size: 1.05rem;
+    font-weight: 600;
+}
+
+.checkout-summary-total strong {
+    color: var(--orange-color);
+    font-size: 1.3rem;
+}
+
+.place-order-button {
+    width: 100%;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 5rem;
+    background: var(--green-color);
+    color: #fff;
+    font-family: inherit;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s ease;
+}
+
+.place-order-button i {
+    margin-left: 8px;
+}
+
+.place-order-button:hover {
+    background: var(--orange-color);
+    transform: translateY(-2px);
+}
+
+
+/* ========================================
+   CHECKOUT EMPTY / LOGIN STATE
+======================================== */
+
+.checkout-message {
+    max-width: 550px;
+    margin: 80px auto;
+    text-align: center;
+    background: #fff;
+    padding: 50px 30px;
+    border-radius: 1rem;
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.05);
+}
+
+.checkout-message > i {
+    font-size: 4rem;
+    color: var(--orange-color);
+    margin-bottom: 15px;
+}
+
+.checkout-message h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+.checkout-message p {
+    color: #777;
+    line-height: 1.6;
+    margin-bottom: 25px;
+}
+
+
+/* ========================================
+   MOBILE CHECKOUT
+======================================== */
+
+@media (max-width: 850px) {
+
+    .checkout-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-summary {
+        position: static;
+    }
+}
+
+@media (max-width: 600px) {
+
+    .checkout-page {
+        padding: 110px 5% 50px;
+    }
+
+    .checkout-heading h1 {
+        font-size: 2rem;
+    }
+
+    .checkout-card,
+    .checkout-summary {
+        padding: 22px;
+    }
+
+    .checkout-fields {
+        grid-template-columns: 1fr;
+    }
+
+    .checkout-field-full {
+        grid-column: auto;
+    }
+
+    .checkout-summary-item {
+        grid-template-columns: 55px 1fr;
+    }
+
+    .checkout-summary-item > strong {
+        grid-column: 2;
+    }
+}
+/* ========================================
+   CART DRAWER
+======================================== */
+
+.cart-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    z-index: 9998;
+    opacity: 1;
+}
+
+.cart-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 400px;
+    max-width: 100%;
+    height: 100vh;
+
+    background: #fff;
+
+    z-index: 9999;
+
+    display: flex;
+    flex-direction: column;
+
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.15);
+
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+
+    overflow: hidden;
+}
+
+.cart-panel.active {
+    transform: translateX(0);
+}
